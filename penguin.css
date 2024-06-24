@@ -1,0 +1,449 @@
+:root {
+    --blue: #2196f3;
+    --gray: #ececec;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    padding: 0;
+    font-family: Cairo, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+body>div:not(.spikes):not(.stats):not(.discount) {
+    padding: 60px 0;
+}
+
+body>.grey {
+    background-color: var(--gray);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+header {
+    z-index: 9999;
+    position: sticky;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 0 10px #ddd;
+}
+
+header .container {
+    width: 65%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header .container .logo {
+    position: relative;
+    color: var(--blue);
+    font-size: 20px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s;
+}
+header .container .logo:hover{
+    color: white;
+}
+header .container .logo::after{
+    content:"";
+    z-index: -1;
+    position: absolute;
+    left:-7px;
+    width: 0%;
+    height: 60%;
+    border-radius: 5px;
+    background-color: rgb(126, 179, 215);
+    transition: width 0.3s;
+   }
+header .container .logo:hover::after{
+    width: 115%;
+   }
+header .container>ul {
+    width: 60%;
+    text-transform: capitalize;
+    padding: 0;
+    font-size: 15px;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .container>ul li{
+    flex-grow: 1;
+}
+header .otherLinks {
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    position: absolute;
+    top:  calc(100% + 100px);
+    left: 50%;
+    transform: translate(-50%);
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+   opacity: 0;
+   align-items: center;
+   z-index: -1;
+   visibility: hidden;
+    transition: top 0.5s,opacity 0.5s;
+}
+
+header .container>ul li:hover .otherLinks {
+    top:calc(100% + 1px);
+   opacity: 1; 
+   z-index: 100;
+   visibility: visible;
+}
+header .otherLinks::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--blue);
+}
+header .otherLinks img {
+    max-width: 450px;
+}
+
+header .otherLinks .links {
+    padding: 0;
+    list-style: none;
+    min-width: 200px;
+    margin: 0 20px;
+}
+
+header .otherLinks .links li {
+    position: relative;
+    padding:10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .otherLinks .links li a{
+    margin: 0 auto;
+}
+header .otherLinks li:not(:last-child) {
+    border-bottom: 1px solid rgba(161, 161, 161, 0.3);
+}
+@media (max-width:1039px){
+    header .otherLinks{
+        gap:10px
+    }
+    header .otherLinks .links {
+    min-width: 150px;
+    margin: 0;
+    gap:10px;
+    }
+    header .otherLinks .links li{
+        font-size: 13px;
+        padding: 5px 0 5px 10px;
+    }
+    header .otherLinks img {
+        max-width: 300px;
+    }
+}
+@media (max-width:800px){
+    header .otherLinks img {
+        max-width: 280px;
+    }
+    header .otherLinks .links {
+        min-width: 160px;}
+}
+@media (max-width:767px){
+    header .otherLinks img {
+        display: none;
+    }
+    header .otherLinks {
+        flex-direction: column;
+        padding: 0;
+        width:100%
+    }
+    header .otherLinks .links{
+        margin: 0;
+        width:100%
+    }
+    header .otherLinks .links li{
+        width:100%
+    }
+    header .otherLinks .links:first-of-type li:last-child{
+    border-bottom: 1px solid rgba(161, 161, 161, 0.3);
+    }
+}
+header .otherLinks .links li::before{
+content:"";
+width:0;
+z-index: -1;
+height:100%;
+background-color: rgba(240, 240, 240, 0.521);
+opacity:0.5;
+position: absolute;
+top:0;
+left:0;
+transition: width 0.5s , opacity 0.7s;
+}
+header .otherLinks .links li:hover::before{
+    width:100%;
+    opacity: 1;
+}
+header .otherLinks li a {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--blue);
+}
+
+header .otherLinks li i {
+    color: var(--blue);
+    padding-right: 10px;
+}
+
+header .container>ul>li >a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    transition: color 0.3s;
+    cursor: pointer;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s;
+}
+
+header .container>ul >li:hover> a {
+    color: var(--blue);
+}
+
+header .container>ul>li:hover {
+    background-color: #f9f9f9;
+}
+
+header .container>ul>li >a::after {
+    content: "";
+    height: 3px;
+    width: 0%;
+    top: 0;
+    left: 0;
+    background-color: var(--blue);
+    position: absolute;
+    transition: width 0.3s;
+}
+
+header .container>ul>li:hover >a::after {
+    width: 100%;
+}
+@media (max-width:1100px) {
+    header .container {
+        width: 75%
+    }
+}
+
+@media (max-width:1039px) {
+    header .container {
+        width: 85%
+    }
+    header .container>ul> li >a {
+        font-size: 14px;
+    }
+}
+@media (max-width:767px) {
+    header .container {
+        flex-direction: column;
+            width: 80%;
+        }
+        header .container .logo {
+            height: 60px;
+            padding: 20px 0 20px;
+        font-size: 25px;
+    }
+
+    
+        header .container>ul>li> a{
+            height: 55px;
+            font-size: 12px;
+        }
+    header .container>ul {
+        width: 100%;
+        justify-content: center;
+    }
+    header .container .otherLinks li{ 
+        width:100%;
+        padding: 10px 40px;
+    }
+}
+
+
+
+.landing {
+    background-image: url("https://storage.googleapis.com/oceanwide_web/media-dynamic/cache/widen_1600/media/default/0001/19/5e34aa0c80324eefbfb75103936a49cc4697794f.jpeg");
+    position: relative;
+    padding: 40px 0;
+}
+
+.landing::before {
+    content: "";
+    position: absolute;
+    top: -83px;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    height: 100%;
+    background-color: rgba(141, 157, 171, 0.3);
+}
+
+.landing .container {
+    width: 70%;
+    margin: 0 auto;
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing .image {
+    z-index: 56;
+    height: 388px;
+    width: 300px;
+    background-image: url("https://clipart-library.com/images_k/penguin-transparent/penguin-transparent-10.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: upAndDown 15s linear infinite;
+}
+
+@media (max-width:1200px) {
+    .landing .container {
+        width: 80%;
+    }
+}
+
+@media (max-width:1039px) {
+    .landing{
+        padding:0 0 30px !important;
+    }
+    .landing .container {
+        width: 90%;
+    }
+}
+
+@media (max-width:767px) {
+    .landing{
+        padding:0 0 0px !important;
+    }
+    .landing .container .image {
+        display: none;
+    }
+    .landing::after {
+    height: 110%;
+        top:-28px
+    }
+    .landing .container {
+    height: 400px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@keyframes upAndDown {
+    0%,
+    100% {
+        transform: translateY(-65px);
+    }
+
+    50% {
+        transform: translateY(15px);
+    }
+}
+
+.landing .text {
+    text-decoration: underline;
+    z-index: 50;
+    width: 50%;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #666;
+    font-weight: 400;
+}
+
+.landing .text h3 {
+    font-weight: bold;
+    font-size: 35px;
+    color: #3b3b3b;
+    letter-spacing: -1px;
+    font-weight: 600;
+}
+
+@media (max-width:1039px) {
+    .landing .text h3 {
+        font-size: 27px;
+    }
+
+    .landing .text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:767px) {
+    .landing .text h3 {
+        font-size: 28px;
+    }
+
+    .landing .text {
+        font-size: 14px;
+    }
+}
+.landing .text p{
+    color: white;
+    text-decoration: none;
+    font-style:italic;
+}
+.landing a {
+    font-size: 25px;
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--blue);
+    position: relative;
+}
+
+@keyframes bouncing {
+    65%,
+    85% {
+        top: 30px;
+    }
+
+    0%,
+    100%,
+    50%,
+    75%,
+    95% {
+        top:10px
+    }
+}
